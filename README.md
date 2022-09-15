@@ -1,2 +1,4 @@
 # DevOpsECE2022
 DevOps Class of ECE in 2022
+LIGNE 3 ON EST LA POTO
+COUCOU BG
