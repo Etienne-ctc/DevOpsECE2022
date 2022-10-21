@@ -2,10 +2,12 @@ name: Node.js CI
 
 on:
   push:
-    branches: [ main ]
+    branches: [ userapi ]
   pull_request:
-    branches: [ main ]
-
+    branches: [ userapi ]
+defaults:
+  run:
+    working-directory: 03.continuous-testing
 jobs:
   build:
 
