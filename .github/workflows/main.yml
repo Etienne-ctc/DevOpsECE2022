@@ -49,5 +49,5 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "ece-lab4" #Must be unique in Heroku
           heroku_email: "etienne.coutenceau@edu.ece.fr"
-          appdir: userapi
+          appdir: 03.continuous-testing
     
