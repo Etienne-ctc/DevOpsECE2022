@@ -1,4 +1,3 @@
-# -*- mode: ruby -*-
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
@@ -20,12 +19,12 @@ Vagrant.configure("2") do |config|
     server.vm.provider "virtualbox" do |vb|
       vb.name =  "gitlab.server.local"
       # VM RAM in MB
-      vb.memory = 2048
+      vb.memory = 4096
       # VM CPUs
       vb.cpus = 1
     end
     config.vm.provider "vmware_desktop" do |vmware|
-      vmware.vmx["memsize"] = "2048"
+      vmware.vmx["memsize"] = "4096"
       vmware.vmx["numvcpus"] = "1"
     end
   end

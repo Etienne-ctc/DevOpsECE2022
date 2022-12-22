@@ -26,3 +26,23 @@
     msg: "{{ gitlab_health.content }}"
 
 # Run the 2 other kind of health checks below
+- name: Check GitLab Liveness
+  uri:
+    url: http://127.0.0.1/-/liveness
+    return_content: yes
+  # Register the output of the module in a variable
+  register: gitlab_live
+
+- name: Print GitLab live
+  debug:
+    msg: "{{ gitlab_live.content }}"
+- name: Check GitLab Ready
+  uri:
+    url: http://127.0.0.1/-/readiness
+    return_content: yes
+  # Register the output of the module in a variable
+  register: gitlab_ready
+
+- name: Print GitLab ready
+  debug:
+    msg: "{{ gitlab_ready.content }}"
