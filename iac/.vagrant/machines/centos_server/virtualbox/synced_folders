@@ -1,0 +1,1 @@
+{"rsync":{"/vagrant":{"type":"rsync","guestpath":"/vagrant","hostpath":"/home/ubuntu/DevOpsECE2022/iac","disabled":false,"__vagrantfile":true,"owner":"vagrant","group":"vagrant"}},"virtualbox":{"/home/vagrant/userapi":{"type":"virtualbox","create":true,"guestpath":"/home/vagrant/userapi","hostpath":"/home/ubuntu/DevOpsECE2022/userapi","disabled":false,"__vagrantfile":true}}}
