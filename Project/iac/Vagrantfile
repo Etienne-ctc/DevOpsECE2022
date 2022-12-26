@@ -15,6 +15,8 @@ Vagrant.configure("2") do |config|
   
   config.vm.provision "shell",
     inline: "bash /vagrant/startup.sh"
+
+  config.vm.network "forwarded_port", guest: 3000, host: 3000
   
 #  config.vm.provision "ansible_local" do |ansible|
 #    ansible.playbook = "playbook.yml"
