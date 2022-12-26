@@ -13,7 +13,7 @@ jobs:
     runs-on: ubuntu-latest
     defaults:
       run:
-        working-directory: 03.continuous-testing
+        working-directory: Labs/03.continuous-testing
 
     strategy:
       matrix:
