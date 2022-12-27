@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: kubernetes-userapi
+spec:
+  type: NodePort
+  selector:
+    app: kubernetes-userapi # TO COMPLETE
+  ports:
+    - port: 3000 # TO COMPLETE
