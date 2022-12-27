@@ -75,11 +75,14 @@ Once installed start it:
 And verify that it's status is OK:
 ```minikube status
 ```
-Now you need to pull the image you pushed to docker hub in order to allow minikube to start an orchestration :
+Now you need to apply the deployement file and the service file :
 ```
-kubectl create deployment userapi --image=<DOCKER_ACCOUNT_NAME>/<CUSTOM_IMAGE_NAME>
+kubectl apply -f userapi\deployment.yaml
+kubectl apply -f userapi\service.yaml
 ```
-
+You should see 3 pods :
+""insert screen pods""
+And you should be able to connect to `localhost:3000` and see `Hello Worl!`.
 ### Service mesh
 
 ### Monitoring
