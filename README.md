@@ -30,6 +30,7 @@ You can check if the image have been created on the UI of Docker Desktop or usin
 ```bash
 docker images
 ```
+![docker images](/images/docker.png "docker image")
 If the image exist you now need to run the container :
 ```bash
 docker run -p 5000:3000 -d userapi
@@ -56,7 +57,7 @@ And push the docker image :
    docker push <DOCKER_ACCOUNT_NAME>/<CUSTOM_IMAGE_NAME>
    ```
 If everything went right you will be able to see the image in your [docker hub repositories](https://hub.docker.com/repositories)
-
+![docker hub images](/images/dockerHub.png "docker hub")
 When you are finished stop de container with the following commands :
 `docker ps` in order to get the id of the countainer.
 `docker stop <CONTAINER_ID>` to stop the container.
@@ -65,21 +66,26 @@ When you are finished stop de container with the following commands :
 In this part we will show you how to orchestrate multiple docker using Docker Compose or Kubernetes
 #### Docker Compose
 If you already have installed Docker, Docker Compose should be installed as well.
-From the project directory run ```docker-compose up```
-If no error appears you should see `Hello World!` when you visit `localhost:5000`
+From the project directory run 
+```docker-compose up```
+If no error appears you should see `Hello World!` when you visit `localhost:5000` as well as seeing the image with `docker images`
+![docker compose images](/images/dockerCompose.png "docker compose")
 #### Kubernetes
 In order to do a kubernetes orchestration you need to install [Minikube] (https://minikube.sigs.k8s.io/docs/start/)
 Once installed start it: 
-```minikube start --driver=docker
-```
+```minikube start --driver=docker```
 And verify that it's status is OK:
-```minikube status
+```minikube status```
+![minikube status](/images/minikubeStatus.png "minikube status")
+Now you need to apply the deployement file and the service file :
 ```
-Now you need to pull the image you pushed to docker hub in order to allow minikube to start an orchestration :
+kubectl apply -f userapi\deployment.yaml
+kubectl apply -f userapi\service.yaml
 ```
-kubectl create deployment userapi --image=<DOCKER_ACCOUNT_NAME>/<CUSTOM_IMAGE_NAME>
-```
+You should see 3 pods :
+![3 pods id](/images/3pods.png "3 Pods")
 
+And you should be able to connect to `localhost:3000` and see `Hello Worl!`.
 ### Service mesh
 
 ### Monitoring
