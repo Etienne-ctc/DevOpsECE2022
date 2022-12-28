@@ -24,7 +24,15 @@ The project is about integrating the labs on a web application. You can find the
 We applied the labs in their orders. We will describe the different building methods and CI we used in this document.
 ### Web application
 
-### CI/CD
+For simplicity's sake, we used the Web app that was provided by the professor. We use the redis database along with the Javcript app.
+
+The Web app can be found [here](https://github.com/adaltas/ece-devops-2022-fall-corrections/tree/main/userapi) or in `/Project/userapi/`.
+
+### CI/CD pipeline
+
+We configured CI/CD pipeline using GitHub Actions.
+GitHub Actions uses the files in the `/.github/workflows/` folder to setup Redis and NodeJS.
+The workflows of the project can be found in `/Project/.github/worklows/`.
 
 ### Provisionning a virtual environnement
 
@@ -37,7 +45,11 @@ To use the Synced folders you have to use the plugin vagrant-vbguest version 0.2
 vagrant plugin uninstall vagrant-vbguest
 vagrant plugin install vagrant-vbguest --version 0.21
 ```
-Go to the directory `/Project/userapi` and execute the `vagrant up` command. It will start to creat the VM with the config in the Vagrantfile in the folder
+Go to the directory `/Project/userapi` and execute the `vagrant up` command. It will start to creat the VM with the config in the Vagrantfile in the folder.
+The provision configures the following:
+- Redis and NodeJS Installation
+- Use of synced files to transmit the Web app to the VM
+- Setup npm and start the Web app
 
 You can execute `curl localhost:3000` and see the response `Hello World!` showing that the web app is correctly exposed and configured.
 
