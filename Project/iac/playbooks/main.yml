@@ -1,0 +1,43 @@
+---
+- hosts: centos_server
+  # Run commands as root
+  become: true
+  #Actions to execute on the hosts
+  tasks:
+    - name: Download node_16.x setup
+      ansible.builtin.get_url:
+        url: https://rpm.nodesource.com/setup_16.x
+        dest: /vagrant/setup_nodejs_16.sh
+        mode: '0550'
+
+    - name: Execute node setup
+      shell: "/vagrant/setup_nodejs_16.sh"
+
+    - name: Yum update
+      ansible.builtin.yum:
+        name: '*'
+        state: latest
+
+    - name: Install epel-release, redis and nodejs
+      ansible.builtin.yum:
+        name:
+          - epel-release
+          - redis
+          - nodejs
+        state: latest
+
+    - name: Enable and start redis
+      ansible.builtin.systemd:
+        name: redis
+        state: started
+        enabled: yes
+
+    - name: Execute npm install
+      ansible.builtin.shell:
+        cmd: npm install
+        chdir: /home/vagrant/userapi/
+
+    - name: Execute npm start in new screen
+      ansible.builtin.shell:
+        cmd: npm start
+        chdir: /home/vagrant/userapi/

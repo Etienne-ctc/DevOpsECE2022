@@ -5,7 +5,7 @@ Vagrant.configure("2") do |config|
   config.vm.define "centos_server" do |server|
     server.vm.box = "centos/7"
     server.vm.provider "virtualbox" do |vb|
-      vb.name = "ubuntu.server.local"
+      vb.name = "centos.server.local"
       vb.memory = 2048
       vb.cpus = 1
     end
@@ -15,15 +15,9 @@ Vagrant.configure("2") do |config|
   
   config.vm.network "forwarded_port", guest: 3000, host: 3000
 
-  config.vm.provision "shell",
-    inline: "bash /vagrant/startup.sh"
-  
-  config.vm.provision "shell",
-    inline: "cd /home/vagrant/userapi ; npm install ; npm start"  
-
-#  config.vm.provision "ansible_local" do |ansible|
-#    ansible.playbook = "playbook.yml"
-#  end
+  config.vm.provision "ansible_local" do |ansible|
+    ansible.playbook = "playbooks/main.yml"
+  end
 
 end
 
