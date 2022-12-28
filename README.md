@@ -48,8 +48,10 @@ vagrant plugin install vagrant-vbguest --version 0.21
 Go to the directory `/Project/userapi` and execute the `vagrant up` command. It will start to creat the VM with the config in the Vagrantfile in the folder.
 The provision configures the following:
 - Redis and NodeJS Installation
+- Install VBox Additions
 - Use of synced files to transmit the Web app to the VM
 - Setup npm and start the Web app
+- NAT for the port 3000 (web app port)
 
 You can execute `curl localhost:3000` and see the response `Hello World!` showing that the web app is correctly exposed and configured.
 
