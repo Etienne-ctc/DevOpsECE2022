@@ -141,8 +141,3 @@ You should see 3 pods :
 ![3 pods id](/images/3pods.png "3 Pods")
 
 And you should be able to connect to `localhost:3000` and see `Hello Worl!`.
-### Service mesh
-
-### Monitoring
-
-
