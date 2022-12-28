@@ -28,9 +28,27 @@ We applied the labs in their orders. We will describe the different building met
 
 ### Provisionning a virtual environnement
 
-Utiliser le plugin vagrant-vbguest version 0.21
+In this section, we will use Vagrant and Ansible to create and provision a Virtual Machine running on CentOS 7.
+
+Download Vagrant and Virtualbox
+
+To use the Synced folders you have to use the plugin vagrant-vbguest version 0.21
+```bash
 vagrant plugin uninstall vagrant-vbguest
 vagrant plugin install vagrant-vbguest --version 0.21
+```
+Go to the directory `/Project/userapi` and execute the `vagrant up` command. It will start to creat the VM with the config in the Vagrantfile in the folder
+
+You can execute `curl localhost:3000` and see the response `Hello World!` showing that the web app is correctly exposed and configured.
+
+Executing the following command will create a user on the hosted web app:
+```bash
+curl --header "Content-Type: application/json" --request POST --data '{"username":"sergkudinov","firstname":"sergei","lastname":"kudinov"}' http://localhost:3000/user
+```
+The response should be this is everything is correctly configured:
+```bash
+{"status":"success","msg":"OK"}
+```
 
 ### Container image
 In order to manage the container images for the deployment of the web application, you need to install Docker Desktop.
